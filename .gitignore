@@ -1,0 +1,11 @@
+/materials
+/not used
+/vic ACCIDENT
+/.idea
+/.ipynb_checkpoints
+/*.iml
+*.twb
+*.ipynb
+example*.js
+screenshot.png
+*.code-workspace

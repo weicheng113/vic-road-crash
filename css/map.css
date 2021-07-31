@@ -1,0 +1,26 @@
+.map {
+    isolation: isolate;
+}
+.land {
+    fill: #DDDDDD;
+    stroke: none;
+}
+.border {
+    fill: none;
+    stroke: #FFFFFF;
+}
+.border--state {
+    stroke-width: 1;
+}
+.bubble {
+    stroke: black;
+    stroke-width: 0.5px;
+    fill-opacity: 0.8;
+}
+.bubble--hover {
+    fill: #0d7a2e;
+    stroke: #000000;
+    stroke-width: 2px;
+    fill-opacity: 0.9;
+    mix-blend-mode: multiply;
+}

@@ -1,0 +1,92 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Victoria Road Accident Death Analysis</title>
+
+  <link rel="stylesheet" href="css/map.css">
+  <link rel="stylesheet" href="css/tab.css">
+  <style>
+    .content {
+      max-width: 1024px;
+      margin: auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="content">
+    <div id="main">
+      <h2 style="text-align:center">Victoria Road Accident Death Analysis</h2>
+      <p>Victoria(a state of Australia) Road Accident data, which can be download <a href="https://vicroadsopendatastorehouse.vicroads.vic.gov.au/opendata/Road_Safety/ACCIDENT.zip">here</a>.
+        The analysis focus on the road accident deaths during the period between <b>year 2015</b> and <b>year 2019</b>.
+      </p>
+      <p>
+        From the map below, there are two locations that are standing out among the rest. The top road death location is around Ballarat, Victoria 3352, northwest to the Melbourne city.
+        This is the area that is far away from Melbourne city center. It is astonishing to learn that although it had total number of 284 accidents which is only ranked about median compared to others,
+        it has resulted in <b>18</b> deaths during the period, the highest death rate.
+      </p>
+      <p>
+        Additionally, the second highest death area is around Wyndham, Victoria 3030, located to the west just outside Melbourne city.
+        It accumulated a total number of 768 accidents and there were 16 deaths during the period. The area represented both a high accident rate and a high death rate.
+      </p>
+      <p>
+        Let us hover the mouse on the top of one of the areas and <b>click</b> to find out potential corrected factors.
+      </p>
+    </div>
+    <div id="details" style="display: none">
+      <div id="desc3352" style="display: none">
+        <h3>Ballarat, Victoria 3352</h3>
+
+        <p>
+          We are looking at the road death area around Ballarat, Victoria 3352, which had 18 deaths out of a total number of 284 accidents ranked the highest death record during the period.
+          Looking at the data, we notice the following.
+        </p>
+
+        <ul>
+          <li>From 'By Time' chart, we notice that there was a big accident on April 16th, 2016. It resulted in 3 kills and the accident involved a heavy vehicle and a light vehicle.</li>
+          <li>From 'By Light Condition' chart, we can see that dark street condition, which includes 'Dark Street lights on' and 'Dark Street no lights', constituted large portion of the deaths.</li>
+          <li>From 'By Driver Gender' graph, it shows that majority of deaths in the area were connected to male drivers.</li>
+        </ul>
+      </div>
+
+      <div id="desc3030" style="display: none">
+        <h3>Wyndham, Victoria 3030</h3>
+
+        <p>
+          We are looking at the road death area around Wyndham, Victoria 3030, which had 16 deaths out of a total number of 768 accidents ranked the second highest death record during the period.
+          Looking at the data, we notice the following.
+        </p>
+
+        <ul>
+          <li>From 'By Time' chart, we notice that there was a big accident on December 24th, 2017. It resulted in 3 kills and the accident involved two light vehicles.</li>
+          <li>
+            From 'By Time' graph, we see that 'Motor Cycles' vehicles' accidents caused 3 deaths, which is worrying.
+            When we turn to 'By Driver Gender' graph, we learn that the 3 kills were related to 3 male 'Motor Cycles' drivers and 1 female 'Motor Cycles' driver.</li>
+        </ul>
+      </div>
+
+      <div class="tab">
+        <button id="byTime" class="tablinks active" data-detail="byTime">By Time</button>
+        <button class="tablinks" data-detail="byLightCondition">By Light Condition</button>
+        <button class="tablinks" data-detail="byGender">By Driver Gender</button>
+        <button class="tablinks" data-detail="byLocation" style="float: right; background-color: cornflowerblue">Show Map</button>
+      </div>
+    </div>
+
+    <div class="canvas"></div>
+  </div>
+
+  <script src="https://d3js.org/d3.v6.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/3.0.2/topojson.js"></script>
+  <script src="https://rawgit.com/susielu/d3-annotation/master/d3-annotation.min.js"></script>
+  <script src="domain.js"></script>
+  <script src="controller.js"></script>
+  <script src="by-location.js"></script>
+  <script src="accident-bar-chart.js"></script>
+  <script src="by-time.js"></script>
+  <script src="by-light-condition.js"></script>
+  <script src="by-gender.js"></script>
+<!--  <script src="example4.js"></script>-->
+  <script src="graph.js"></script>
+  <script src="index.js"></script>
+</body>
+</html>
