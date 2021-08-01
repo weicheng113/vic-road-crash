@@ -92,6 +92,7 @@ class DataSet {
 class Accident {
     constructor(id, dateTime, numberPersonsKilled, lightConditionCategory) {
         this.id = id;
+        this.date = new Date(dateTime.toDateString());
         this.dateTime = dateTime;
         this.numberPersonsKilled = numberPersonsKilled;
         this.lightConditionCategory = lightConditionCategory;
@@ -110,8 +111,8 @@ class Accidents {
         this.drivers = drivers;
     }
 
-    groupByDateTime() {
-        return this.groupByProperty("dateTime");
+    groupByDate() {
+        return this.groupByProperty("date");
     }
 
     groupByProperty(prop) {
@@ -227,8 +228,8 @@ class Accidents {
     static lightConditionCategories = ["Dark Street lights on", "Dark Street no lights", "Day", "Others"];
     static genders = ["Female", "Male", "Unknown"];
 
-    static startDate = new Date("2015-01-01 00:00:00");
-    static endDate = new Date("2019-12-31 23:59:59");
+    static startDate = new Date("2015-01-01");
+    static endDate = new Date("2019-12-31");
 
     static startAccidentPlaceHolder = new Accident(null, Accidents.startDate, 0, null, null, null);
     static endAccidentPlaceHolder = new Accident(null, Accidents.endDate, 0, null, null, null);
@@ -380,6 +381,10 @@ class Vehicles {
         }, new Set());
         return Array.from(categories);
     }
+
+    vehicleTypes() {
+        return this.vehicles.map(v => v.vehicleTypeDesc);
+    }
 }
 
 Array.prototype.groupBy = function(f) {
@@ -393,8 +398,8 @@ Array.prototype.groupBy = function(f) {
         return acc;
     }, new Map());
     return Array.from(byKey, function(entry) {
-        const [key, value] = entry;
-        return {key: key, group: value};
+        const [key, group] = entry;
+        return {key: key, group: group};
     });
     // const byKey = this.reduce(function (acc, item) {
     //     const key = f(item);
@@ -407,16 +412,15 @@ Array.prototype.groupBy = function(f) {
     // return Object.entries(byKey).map(function(item) {
     //     return {key: item[0], group: item[1]};
     // });
-
-    // const keys = Array.from(new Set(this.map(item => f(item))));
-    // const array = this;
-    // const groups = keys.map(function(key) {
-    //     const group = array.filter(item => f(item) == key)
-    //     return {key: key, group: group};
-    // });
-    // return groups;
 };
 
 Array.prototype.groupByProperty = function(prop) {
     return this.groupBy(item => item[prop]);
+}
+
+Array.prototype.groupCount = function(f) {
+    return this.groupBy(f).map(function(item) {
+        const {key, group} = item;
+        return {key: key, count: group.length};
+    });
 }

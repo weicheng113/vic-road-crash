@@ -30,7 +30,7 @@ class Controller {
             self.lga = dataset.lga();
             self.accidents = dataset.accidents();
             self.showMap();
-            // self.onPostcodeClick("3030")
+            // self.onPostcodeClick("3352");
         });
     }
 

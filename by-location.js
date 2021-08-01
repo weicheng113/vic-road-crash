@@ -33,6 +33,7 @@ class ByLocationMap {
 
         this.renderBubbles(accidents, projection);
         this.renderAnnotation(accidents, projection);
+        this.addLegend();
     }
 
     renderMap(lga, projection) {
@@ -161,5 +162,43 @@ class ByLocationMap {
 
         this.graph.append("g")
             .call(makeAnnotations)
+    }
+
+    addLegend() {
+        const legendGroup = this.graph.append("g").attr("transform", `translate(${this.graphSpec.width() - 300}, 0)`);
+
+        const gap = {x: 30, y: 40};
+        const circleSpecs = [
+            //Size
+            {cx: 200, cy: 10, r: 2, fill: "white"},
+            {cx: 200 + gap.x, cy: 10, r: 15, fill: "white"},
+            //Color
+            {cx: 200, cy: 10 + gap.y, r: 10, fill: "palegoldenrod"},
+            {cx: 200 + gap.x, cy: 10 + gap.y, r: 10, fill: "darkred"},
+        ]
+
+        legendGroup.selectAll("legendSymbol")
+            .data(circleSpecs)
+            .enter()
+            .append("circle")
+            .attr("class", "bubble")
+            .attr("cx", d => d.cx)
+            .attr("cy", d => d.cy)
+            .attr("r", d => d.r)
+            .style("fill", d => d.fill);
+
+        const textSpecs = [
+            {x: 10, y: circleSpecs[0].cy + 8, text: `No. Accidents(${this.bubbleRadius.domain().join("~")}):`},
+            {x: 10 + 35, y: circleSpecs[2].cy + 5, text: `No. Deaths(${this.color.domain().join("~")}):`}
+        ]
+        legendGroup.selectAll("legendLabels")
+            .data(textSpecs)
+            .enter()
+            .append("text")
+            .attr("x", d => d.x)
+            .attr("y", d => d.y)
+            .text(d => d.text)
+            .attr("text-anchor", "right")
+            .style("alignment-baseline", "bottom");
     }
 }

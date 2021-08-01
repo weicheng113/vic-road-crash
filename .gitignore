@@ -4,8 +4,8 @@
 /.idea
 /.ipynb_checkpoints
 /*.iml
-*.twb
-*.ipynb
-example*.js
-screenshot.png
-*.code-workspace
+/*.twb
+/example*.js
+/screenshot.png
+/workspace.code-workspace
+/*.ipynb
