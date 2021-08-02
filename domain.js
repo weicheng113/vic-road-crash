@@ -230,7 +230,7 @@ class Accidents {
 
     static vehicleCategories = ["Other Vehicles", "Motor Cycles", "Heavy Vehicles", "Light Vehicles"];
     static lightConditionCategories = ["Dark Street lights on", "Dark Street no lights", "Day", "Others"];
-    static genders = ["Female", "Male", "Unknown"];
+    static genders = ["Female", "Male"];
 
     static startDate = new Date("2015-01-01");
     static endDate = new Date("2019-12-31");

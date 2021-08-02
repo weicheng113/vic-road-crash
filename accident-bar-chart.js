@@ -80,7 +80,7 @@ class AccidentBarChart {
     }
 
     addLegend() {
-        const legendGroup = this.graph.append("g").attr("transform", `translate(${this.graphSpec.width() - 200}, 0)`);
+        const legendGroup = this.graph.append("g").attr("transform", `translate(${this.graphSpec.width() - 100}, 0)`);
 
         const circleSpec = {cx: 10, cy: 10, r: 7};
         const gap = 25;

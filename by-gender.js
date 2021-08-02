@@ -18,7 +18,7 @@ class ByGenderChart extends AccidentBarChart {
     mapXSubgroup() {
         return d3.scaleBand()
             .domain(Accidents.vehicleCategories)
-            .range([0, this.graphSpec.width()/Accidents.lightConditionCategories.length/2])
+            .range([0, this.graphSpec.width()/Accidents.lightConditionCategories.length])
     }
 
     render(accidents) {
