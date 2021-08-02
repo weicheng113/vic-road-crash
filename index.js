@@ -8,6 +8,7 @@ class Main extends ControllerListener {
         this.byTimeBtn = document.querySelector('.tab #byTime');
         this.byLightConditionBtn = document.querySelector('.tab #byLightCondition');
         this.detailsDiv = document.querySelector('#details');
+        this.details2Div = document.querySelector('#details2');
         this.mainDiv = document.querySelector("#main");
         this.detailSelected = "byTime";
 
@@ -72,6 +73,7 @@ class Main extends ControllerListener {
 
         this.mainDiv.style.display = "block";
         this.detailsDiv.style.display = "none";
+        this.details2Div.style.display = "none";
 
         this.controller.showMap();
     }
@@ -95,6 +97,7 @@ class Main extends ControllerListener {
         }
         this.mainDiv.style.display = "none";
         this.detailsDiv.style.display = "block";
+        this.details2Div.style.display = "block";
         this.selectByTime();
 
         this.showByTimeChart();
