@@ -67,6 +67,7 @@ class ByLightConditionChart extends AccidentBarChart {
         // exit: remove redundant rect.
         subBarGroup.exit().remove();
 
+        const tooltip = new Tooltip();
         //enter: append rect if not enough.
         subBarGroup.enter()
             .append("rect")
@@ -76,6 +77,16 @@ class ByLightConditionChart extends AccidentBarChart {
             .attr("height", function (d) {
                 return self.graphSpec.height() - self.y(d.group.totalDeaths());
             })
-            .attr("fill", d => this.color(d.key));
+            .attr("fill", d => this.color(d.key))
+            .on("mouseover", function(e) {
+                return tooltip.onMouseover(e);
+            })
+            .on("mousemove", function(e, d) {
+                return tooltip.onMousemove(e, d,`<b>${d.key}</b><br>Total deaths: ${d.group.totalDeaths()}`);
+            })
+            .on("mouseleave", function(e) {
+                return tooltip.onMouseleave(e);
+            });
+
     }
 }

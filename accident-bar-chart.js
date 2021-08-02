@@ -54,7 +54,7 @@ class AccidentBarChart {
         xAxisGroup.call(this.xAxis);
 
         xAxisGroup.selectAll("text")
-            .attr("transform", "rotate(-45)")
+            .attr("transform", "rotate(-30)")
             .attr("text-anchor", "end");
     }
 
@@ -112,5 +112,41 @@ class AccidentBarChart {
 
     render(accidents) {
         throw new Error("Not.Implemented");
+    }
+}
+
+class Tooltip {
+    constructor() {
+        this.tooltip = d3.select(".canvas")
+            .append("div")
+            .style("position", "absolute")
+            .style("opacity", 0)
+            .attr("class", "tooltip")
+            .style("background-color", "white")
+            .style("border", "solid")
+            .style("border-width", "2px")
+            .style("border-radius", "5px")
+            .style("padding", "5px")
+    }
+
+    onMouseover(e) {
+        this.tooltip.style("opacity", 1)
+        d3.select(e.currentTarget)
+            .style("stroke", "black")
+            // .style("opacity", 1)
+    }
+    onMousemove(e, d, displayHtml) {
+        // console.log((d3.pointer(e)[0]+70), (d3.pointer(e)[1]))
+        this.tooltip.html(displayHtml)
+            .style("left", `${e.pageX}px`)
+            .style("top", `${e.pageY}px`)
+            // .style("left", `${d3.pointer(e)[0]+300}px`)
+            // .style("top", `${d3.pointer(e)[1]+220}px`)
+    }
+    onMouseleave(e) {
+        this.tooltip.style("opacity", 0)
+        d3.select(e.currentTarget)
+            .style("stroke", "none")
+            // .style("opacity", 0.8)
     }
 }

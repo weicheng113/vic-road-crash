@@ -6,6 +6,7 @@ class Main extends ControllerListener {
         this.desc3030Div = document.querySelector('#desc3030');
         this.descDivs = {"3352": this.desc3352Div, "3030": this.desc3030Div};
         this.byTimeBtn = document.querySelector('.tab #byTime');
+        this.byLightConditionBtn = document.querySelector('.tab #byLightCondition');
         this.detailsDiv = document.querySelector('#details');
         this.mainDiv = document.querySelector("#main");
         this.detailSelected = "byTime";
@@ -87,6 +88,11 @@ class Main extends ControllerListener {
     onPostcodeSelected() {
         this.clearDetailSelection();
         this.descDivs[this.controller.selectedPostcode].style.display = "block";
+        if(this.controller.selectedPostcode == "3030") {
+            this.byLightConditionBtn.style.display = "none";
+        } else {
+            this.byLightConditionBtn.style.display = "block";
+        }
         this.mainDiv.style.display = "none";
         this.detailsDiv.style.display = "block";
         this.selectByTime();

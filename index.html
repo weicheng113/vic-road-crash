@@ -16,17 +16,17 @@
   <div class="content">
     <div id="main">
       <h2 style="text-align:center">Victoria Road Accident Death Analysis</h2>
-      <p>Victoria(a state of Australia) Road Accident data, which can be download <a href="https://vicroadsopendatastorehouse.vicroads.vic.gov.au/opendata/Road_Safety/ACCIDENT.zip">here</a>.
+      <p>Victoria(a state of Australia) Road Accident data, which is from VicRoads and Public Transport Victoria, and can be download <a href="https://vicroadsopendatastorehouse.vicroads.vic.gov.au/opendata/Road_Safety/ACCIDENT.zip">here</a>.
         The analysis focus on the road accident deaths during the period between <b>year 2015</b> and <b>year 2019</b>.
       </p>
       <p>
         From the map below, there are two locations that are standing out among the rest. The top road death location is around Ballarat, Victoria 3352, northwest to the Melbourne city.
         This is the area that is far away from Melbourne city center. It is astonishing to learn that although it had total number of 284 accidents which is only ranked about median compared to others,
-        it has resulted in <b>18</b> deaths during the period, the highest death rate.
+        it has resulted in <b>18</b> deaths during the period, the highest death record.
       </p>
       <p>
         Additionally, the second highest death area is around Wyndham, Victoria 3030, located to the west just outside Melbourne city.
-        It accumulated a total number of 768 accidents and there were 16 deaths during the period. The area represented both a high accident rate and a high death rate.
+        It accumulated a total number of 768 accidents and there were 16 deaths during the period. The area represented both a high accident rate and a high death record.
       </p>
       <p>
         Let us hover the mouse on one of the <b>two annotated areas</b> and <b>click</b> to find out potential corrected factors.
@@ -42,7 +42,7 @@
         </p>
 
         <ul>
-          <li>From 'By Time' chart, we notice that there was a big accident on April 16th, 2016. It resulted in 3 kills and the accident involved a heavy vehicle and a light vehicle.</li>
+          <li>From 'By Time' chart, we notice that there was a big accident on April 16th, 2016. It resulted in 3 kills and the accident involved a PrimeMover B-Double and a car.</li>
           <li>From 'By Light Condition' chart, we can see that dark street condition, which includes 'Dark Street lights on' and 'Dark Street no lights', constituted large portion of the deaths.</li>
           <li>From 'By Driver Gender' graph, it shows that majority of deaths in the area were connected to male drivers.</li>
         </ul>
@@ -57,22 +57,23 @@
         </p>
 
         <ul>
-          <li>From 'By Time' chart, we notice that there was a big accident on December 24th, 2017. It resulted in 3 kills and the accident involved two light vehicles.</li>
+          <li>From 'By Time' chart, we notice that there was a big accident on December 24th, 2017. It resulted in 3 kills and the accident involved two cars.</li>
           <li>
-            From 'By Time' graph, we see that 'Motor Cycles' vehicles' accidents caused 3 deaths, which is worrying.
+            From 'By Time' graph, we see that 'Motor Cycles' vehicles' accidents in yellow caused 3 deaths, which is worrying.
             When we turn to 'By Driver Gender' graph, we learn that the 3 kills were related to 3 male 'Motor Cycles' drivers and 1 female 'Motor Cycles' driver.</li>
         </ul>
       </div>
 
       <div class="tab">
         <button id="byTime" class="tablinks active" data-detail="byTime">By Time</button>
-        <button class="tablinks" data-detail="byLightCondition">By Light Condition</button>
+        <button id="byLightCondition" class="tablinks" data-detail="byLightCondition">By Light Condition</button>
         <button class="tablinks" data-detail="byGender">By Driver Gender</button>
         <button class="tablinks" data-detail="byLocation" style="float: right; background-color: cornflowerblue">Show Map</button>
       </div>
     </div>
 
     <div class="canvas"></div>
+    <div id="tooltip"></div>
   </div>
 
   <script src="https://d3js.org/d3.v6.min.js"></script>

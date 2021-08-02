@@ -68,6 +68,7 @@ class ByTimeBarChart extends AccidentBarChart {
         // exit: remove redundant rect.
         subBarGroup.exit().remove();
 
+        const tooltip = new Tooltip();
         //enter: append rect if not enough.
         subBarGroup.enter()
             .append("rect")
@@ -77,7 +78,17 @@ class ByTimeBarChart extends AccidentBarChart {
             .attr("height", function (d) {
                 return self.graphSpec.height() - self.y(d.group.totalDeaths());
             })
-            .attr("fill", d => this.color(d.key));
+            .attr("fill", d => this.color(d.key))
+            .on("mouseover", function(e) {
+                return tooltip.onMouseover(e);
+            })
+            .on("mousemove", function(e, d) {
+                const date = d.group.firstAccident().date;
+                return tooltip.onMousemove(e, d,`<b>${date.toLocaleDateString()}</b><br>${d.key}<br>${d.group.totalDeaths()} deaths`);
+            })
+            .on("mouseleave", function(e) {
+                return tooltip.onMouseleave(e);
+            });
     }
 
     renderAnnotation(accidents) {

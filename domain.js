@@ -209,6 +209,10 @@ class Accidents {
         return this.accidents.length;
     }
 
+    firstAccident() {
+        return this.accidents[0];
+    }
+
     firstGeoLocation() {
         const accident = this.accidents[0];
         const node = this.nodes.nodeOfAccident(accident.id);

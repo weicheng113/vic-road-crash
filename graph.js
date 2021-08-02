@@ -31,7 +31,7 @@ class GraphSpec {
 // set the dimensions and margins of the graph
 const svgSpec = new GraphSpec(
     content = { width: 800, height: 800 },
-    margin = {top: 10, right: 30, bottom: 150, left: 60});
+    margin = {top: 10, right: 30, bottom: 60, left: 60});
 const graphSpec = svgSpec.contentSpec({top: 0, right: 0, bottom: 0, left: 0});
 
 // append the svg object to the body of the page

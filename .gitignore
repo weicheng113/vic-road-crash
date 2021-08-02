@@ -9,3 +9,6 @@
 /screenshot.png
 /workspace.code-workspace
 /*.ipynb
+/Essay.*
+/.Rhistory
+/Project.Rproj
